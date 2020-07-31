@@ -4,7 +4,7 @@ import { View, Text, Button, StyleSheet, Image, Dimensions, ScrollView } from 'r
 import BodyText from '../BodyText';
 import TitleText from '../TitleText';
 import Colors from '../../constants/colors';
-import MainButton from '../../components/MainButton';
+import MainButton from '../MainButton';
 
 const GameOverScreen = props => {
   const [availableDeviceWidth, setAvailableDeviceWidth] = useState(Dimensions.get('window').width);
@@ -27,18 +27,19 @@ const GameOverScreen = props => {
     <ScrollView>
       <View style={styles.screen}>
         <TitleText>The Game is over!</TitleText>
-        <View style={{ ...styles.imageContainer, ...{ width: availableDeviceWidth * .7, height: availableDeviceHeight * .7, borderRadius: (availableDeviceWidth * .7) / 2, marginVertical: availableDeviceHeight / 30 } }}>
+        <View style={{ ...styles.imageContainer, ...{ width: availableDeviceWidth * .7, height: availableDeviceHeight * .5, borderRadius: (availableDeviceWidth * .7) / 2, marginVertical: availableDeviceHeight / 30 } }}>
           {/* <Image style={styles.image} resizeMode="cover" source={require('../../assets/success.png')} /> */}
           {/* images from remote/network must set width/height bc react unable to detect while loading */}
           <Image style={styles.image} resizeMode="cover" source={{ uri: 'https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=676&q=80' }} />
         </View>
         <View style={{ ...styles.resultContainer, ...{ marginVertical: availableDeviceHeight / 60 } }}>
           {/* <Text> nested in <Text> will inherit styles from upper layer */}
-          <BodyText style={{ ...styles.resultBody, ...{ fontSize: setAvailableDeviceHeight < 400 ? 16 : 20 } }}>Number of rounds:
-            <Text style={styles.highlight}>{props.roundsNumber}</Text>
+          <BodyText style={{ ...styles.resultBody, ...{ fontSize: setAvailableDeviceHeight < 400 ? 16 : 20 } }}>
+            <Text>Number of rounds: </Text>
+            <Text style={styles.highlight}>{props.roundsNumber} {"\n"}</Text>
             {/* </BodyText>
           <BodyText style={styles.resultBody}> */}
-            Number was:
+            <Text>Number was: </Text>
             <Text style={styles.highlight}>{props.userNumber}</Text>
           </BodyText>
         </View>
