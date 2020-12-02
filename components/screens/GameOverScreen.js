@@ -38,7 +38,7 @@ const GameOverScreen = props => {
             <Text>Number of rounds: </Text>
             <Text style={styles.highlight}>{props.roundsNumber} {"\n"}</Text>
             {/* </BodyText>
-          <BodyText style={styles.resultBody}> */}
+        <BodyText style={styles.resultBody}> */}
             <Text>Number was: </Text>
             <Text style={styles.highlight}>{props.userNumber}</Text>
           </BodyText>
